@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { ChakraProvider, extendTheme, Flex } from '@chakra-ui/react';
+import { Routes, Route } from 'react-router-dom';
+import "@fontsource/kanit";
+
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+
+const theme = extendTheme({
+  fonts: {
+    body: "Kanit, system-ui, sans-serif",
+    heading: "Kanit, system-ui, serif",
+    mono: "Menlo, monospace",
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Flex direction="column" minHeight="100vh">
+        <Navbar />
+        <Flex flex="1" direction="column" overflow="auto">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </Flex>
+        <Footer />
+      </Flex>
+    </ChakraProvider>
   );
 }
 
