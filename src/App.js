@@ -20,7 +20,7 @@ const theme = extendTheme({
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Flex direction="column" minHeight="100vh">
+      <Flex direction="column" minHeight="100dvh">
         <Navbar />
         <Flex flex="1" direction="column" overflow="auto">
           <Routes>
